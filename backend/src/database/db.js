@@ -1,9 +1,9 @@
-import { config } from 'dotenv';
 import pg from "pg";
-import { rootDir } from '../utils/common.utils.js';
+import { loadEnv } from '../utils/common.utils.js';
 
 const { Pool } = pg;
-config({ path: rootDir() + '/.env' })
+
+loadEnv();
 
 const pool = new Pool({
   host: process.env.PG_DB_HOST,

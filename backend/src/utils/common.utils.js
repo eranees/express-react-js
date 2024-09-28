@@ -1,5 +1,6 @@
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { config } from 'dotenv';
 
 export function timeStamp() {
   return + new Date();
@@ -13,3 +14,7 @@ export function rootDir() {
   return rootDirectory;
 }
 
+
+export function loadEnv() {
+  config({ path: rootDir() + '/.env' })
+}
