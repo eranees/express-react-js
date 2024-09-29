@@ -1,7 +1,11 @@
 import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
+
 import pool from "./database/db.js";
+import userRoute from './routes/user.route.js'
+import errorHandler from "./middleware/error/error.middleware.js";
+
 
 dotenv.config();
 const PORT = process.env.APP_PORT || 3000;
@@ -10,6 +14,8 @@ const APP_HOST = process.env.APP_HOST || '127.0.0.1';
 const app = express();
 
 app.use(bodyParser.json())
+
+app.use('/user', userRoute);
 
 app.get('/', (req, res) => {
   res.json({
@@ -32,9 +38,4 @@ app.get('/', (req, res) => {
   }
 })();
 
-app.use((err, req, res, next) => {
-  res.status(500).json({
-    message: 'Internal Server Error',
-    error: err.message
-  });
-});
+app.use(errorHandler)

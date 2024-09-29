@@ -1,5 +1,5 @@
 import pg from "pg";
-import { loadEnv } from '../utils/common.utils.js';
+import { loadEnv } from '../utils/common.util.js';
 
 const { Pool } = pg;
 

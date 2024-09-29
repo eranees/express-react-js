@@ -1,6 +1,5 @@
-import { Status } from "../enums/common.enums";
-import { timeStamp } from "../utils/common.utils";
-
+import { Status } from "../enums/common.enums.js";
+import { timeStamp } from "../utils/common.util.js";
 export default class UserEntity {
 	constructor(name, email, password, updated) {
 		this.name = name;
