@@ -14,6 +14,7 @@ export class UserMapper {
 
   toResponse(data) {
     const d = instanceToPlain(data);
+    delete d.password;
     const response = plainToClass(UserResponseDto, d);
     return response;
   }
@@ -21,7 +22,8 @@ export class UserMapper {
   toArrayResponse(data) {
     return data.map((item) => {
       const d = instanceToPlain(item);
-      return plainToClass(UserResponseDto, d, { excludeExtraneousValues: true });
+      delete d.password
+      return plainToClass(UserResponseDto, d);
     });
   }
 }

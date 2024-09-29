@@ -13,4 +13,16 @@ userRouter.get('/:id', async (req, res, next) => {
   await userController.findOne(req, res, next);
 });
 
+userRouter.get('/', async (req, res, next) => {
+  await userController.findAll(req, res, next);
+});
+
+userRouter.delete('/:id', async (req, res, next) => {
+  await userController.delete(req, res, next);
+});
+
+userRouter.put('/:id', async (req, res, next) => {
+  await userController.update(req, res, next);
+});
+
 export default userRouter;
